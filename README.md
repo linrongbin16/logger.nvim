@@ -29,10 +29,10 @@ require('logger').setup({
     name = nil,
 
     -- Log level.
-    --      DEBUG
-    --      INFO
-    --      WARN
-    --      ERROR
+    --   DEBUG
+    --   INFO
+    --   WARN
+    --   ERROR
     level = "INFO",
 
     -- Write log to console(command line).
