@@ -21,6 +21,16 @@ which I use to develop my Neovim lua plugins.
     },
 ```
 
+Or you can simply add logger as your plugin's dependency:
+
+```lua
+    {
+        'your_name/your_plugin',
+        dependencies = 'linrongbin16/logger.nvim',
+        ...
+    },
+```
+
 ## Configuration
 
 ```lua
