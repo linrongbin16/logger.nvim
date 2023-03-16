@@ -7,17 +7,7 @@ Neovim lua plugins.
 
 ### Lazy.nvim
 
-```lua
-{
-    'linrongbin16/logger.nvim',
-    lazy = true,
-    config = function()
-        require('logger').setup()
-    end,
-},
-```
-
-Or you can simply add logger as your plugin's dependency:
+Add logger as your plugin's dependency:
 
 ```lua
 {
@@ -27,11 +17,13 @@ Or you can simply add logger as your plugin's dependency:
 },
 ```
 
-And in your plugin (usually in the setup function), setup the logger:
+Then in your plugin (usually in the setup function), setup the logger:
 
 ```lua
-require('logger').setup()
+require('logger').setup({ name = 'your_plugin' })
 ```
+
+Logger name is a mandantory field to setup this library.
 
 ## Configuration
 
@@ -67,3 +59,8 @@ require('logger').setup({
 - `require('logger').info(fmt, ...)`
 - `require('logger').warn(fmt, ...)`
 - `require('logger').error(fmt, ...)`
+
+## TODO
+
+- Custom message format.
+- More device sinks.
