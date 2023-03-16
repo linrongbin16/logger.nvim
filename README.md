@@ -1,34 +1,36 @@
 # logger.nvim
 
-Logger for Neovim lua plugin development.
-
-## Introduction
-
-This is a logger library for Neovim lua plugin development,
-which I use to develop my Neovim lua plugins.
+A logger library for Neovim lua plugin development, which I use to develop my
+Neovim lua plugins.
 
 ## Usage
 
 ### Lazy.nvim
 
 ```lua
-    {
-        'linrongbin16/logger.nvim',
-        lazy = true,
-        config = function()
-            require('logger').setup()
-        end,
-    },
+{
+    'linrongbin16/logger.nvim',
+    lazy = true,
+    config = function()
+        require('logger').setup()
+    end,
+},
 ```
 
 Or you can simply add logger as your plugin's dependency:
 
 ```lua
-    {
-        'your_name/your_plugin',
-        dependencies = 'linrongbin16/logger.nvim',
-        ...
-    },
+{
+    'your_name/your_plugin',
+    dependencies = 'linrongbin16/logger.nvim',
+    ...
+},
+```
+
+And in your plugin (usually in the setup function), setup the logger:
+
+```lua
+require('logger').setup()
 ```
 
 ## Configuration
@@ -38,17 +40,13 @@ require('logger').setup({
     -- Logger name.
     name = nil,
 
-    -- Log level.
-    --   DEBUG
-    --   INFO
-    --   WARN
-    --   ERROR
+    -- Log level: ERROR > WARN > INFO > DEBUG.
     level = "INFO",
 
-    -- Write log to console(command line).
+    -- Console(command line) logger.
     console = true,
 
-    -- Write log to file.
+    -- File logger.
     file = false,
 
     -- Log file name, working with `file=true`.
