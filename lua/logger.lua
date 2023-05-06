@@ -30,7 +30,7 @@ local function setup(option)
                 Config.file_name
             )
         else
-            Config.file_path = string.format("%s", Config.file_name)
+            Config.file_path = Config.file_name
         end
     end
     assert(type(Config.name) == "string" and string.len(Config.name) > 0)
@@ -47,10 +47,6 @@ local function setup(option)
         assert(
             type(Config.file_name) == "string"
                 and string.len(Config.file_name) > 0
-        )
-        assert(
-            type(Config.file_dir) == "string"
-                and string.len(Config.file_dir) > 0
         )
     end
 end
