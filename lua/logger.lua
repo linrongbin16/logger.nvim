@@ -14,14 +14,24 @@ local Defaults = {
     file_path = nil,
 }
 local Config = {}
+local PathSeparator = vim.loop.os_uname().sysname:match("Windows") and "\\"
+    or "/"
 
 local function setup(option)
     Config = vim.tbl_deep_extend("force", vim.deepcopy(Defaults), option or {})
     if Config.file_name and string.len(Config.file_name) > 0 then
         -- For Windows: $env:USERPROFILE\AppData\Local\nvim-data\lsp-progress.log
         -- For *NIX: ~/.local/share/nvim/lsp-progress.log
-        Config.file_path =
-            string.format("%s/%s", Config.file_dir, Config.file_name)
+        if Config.file_dir then
+            Config.file_path = string.format(
+                "%s%s%s",
+                Config.file_dir,
+                PathSeparator,
+                Config.file_name
+            )
+        else
+            Config.file_path = string.format("%s", Config.file_name)
+        end
     end
     assert(type(Config.name) == "string" and string.len(Config.name) > 0)
     assert(
